@@ -20,7 +20,7 @@ LeExchange.On('MyInfo',function(Job){
   Job.Result = 'Yesh It Works';
   LeExchange.Finished(Job); // This will trigger the .then on the worker side
 });
-``
+```
 
 ### Worker Side Example
 
