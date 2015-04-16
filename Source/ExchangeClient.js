@@ -4,6 +4,7 @@
 let Myself = self;
 class Exchange extends EventEmitter{
   constructor(){
+    super();
     this.Ports = [];
   }
   Handle(Port){
@@ -22,7 +23,7 @@ class Exchange extends EventEmitter{
         Me.emit(Data.SubType, Data.Message, Data, Port);
         Me.emit('All', Data.Message, Data);
       } else if (Data.Type === 'Reply'){
-        Me.emit(`Job:${Data.ID}`, Data.Message, Port);
+        Me.emit(`JOB:${Data.ID}`, Data.Message, Port);
       }
     });
   }
