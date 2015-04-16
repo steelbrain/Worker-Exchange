@@ -16,7 +16,6 @@ class Exchange extends EventEmitter{
     this.Worker = IsNormal ? new Worker(Path) : new SharedWorker(Path);
     this.Port = IsNormal ? this.Worker : this.Worker.port;
     this.Port.addEventListener('message', function(e){
-      console.log(e);
       let Data = e.data;
       if(!Data || !Data.EXCHANGE) return; // Ignore Non-Exchange Messages
       if(DebugResponses) console.debug(Data);
