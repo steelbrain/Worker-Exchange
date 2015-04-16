@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Web Worker Test</title>
+  </head>
+  <body>
+    <script src="../Dist/Exchange.js"></script>
+    <script>
+      "use strict";
+      var Dedicated, Shared;
+      Dedicated = new Exchange("Worker.js");
+      Dedicated.Request('Ping', 'Now').then(function(Result){
+        console.log(Result);
+        Dedicated.Terminate();
+      });
+      Shared = new Exchange("Worker.js", Exchange.SHARED);
+      Shared.Request('Ping', 'Now').then(function(Result){
+        console.log(Result);
+        Shared.Terminate();
+      });
+    </script>
+  </body>
+</html>
