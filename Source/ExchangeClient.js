@@ -3,7 +3,7 @@
 // @Compiler-Output "../Dist/ExchangeClient.js"
 // @Compiler-Transpile "true"
 // @Compiler-Compress "true"
-// @Compiler-Include "../bower_components/le-emitter/Source/EventEmitter.js"
+// @Compiler-Include "../../le-emitter/Source/EventEmitter.js"
 "use strict";
 let Myself = self;
 class Exchange extends EventEmitter{
