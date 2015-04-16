@@ -39,6 +39,8 @@ Exchange.on('Ping', function(Request, Job){
 });
 ```
 
+Check out the [Online Demo][Demo]. (Check your browser console)
+
 #### Installation
 
 ```js
@@ -73,3 +75,4 @@ This project is licensed under the terms of MIT License. See the LICENSE file fo
 [Le-Emitter]:https://github.com/steelbrain/Le-Emitter
 [WebWorker]:https://developer.mozilla.org/en-US/docs/Web/API/Worker
 [SharedWorker]:https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker
+[Demo]:https://rawgit.com/steelbrain/DeWorker/master/Demo/Demo2.html
