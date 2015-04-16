@@ -1,7 +1,7 @@
 DeWorker - Human Friendly WebWorkers
 ========
 
-DeWorker provides you an easy way to spawn and communicate with WebWorkers.
+DeWorker provides you an easy way to spawn and communicate with WebWorkers. DeWorker uses [Le-Emitter][Le-Emitter] as it's event emitter.
 
 ### Client Side Example
 
@@ -34,3 +34,5 @@ DWorker.on('OtherPing',function(Job){
   DWorker.finished(Job);
 });
 ```
+
+[Le-Emitter]:https://github.com/steelbrain/Le-Emitter
