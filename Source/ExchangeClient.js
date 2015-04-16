@@ -10,7 +10,7 @@ class Exchange extends EventEmitter{
   Handle(Port){
     this.Ports.push(Port);
     let Me = this;
-    if(this.Type === Exchange.SHARED){
+    if(Port.start){
       Port.start();
     }
     Port.addEventListener('message', function(e){
@@ -50,17 +50,12 @@ class Exchange extends EventEmitter{
   }
 }
 Exchange = new Exchange;
-Exchange.Type = null;
-Exchange.SHARED = 'SHARED';
-Exchange.NORMAL = 'NORMAL';
 self.addEventListener('message', function Once(){
   // I am a dedicated worker
-  Exchange.Type = Exchange.NORMAL;
   Exchange.Handle(Myself);
   Myself.removeEventListener('message', Once);
 });
 self.addEventListener('connect', function(e){
   // I am a shared worker
-  Exchange.Type = Exchange.SHARED;
   Exchange.Handle(e.ports[0]);
 });
