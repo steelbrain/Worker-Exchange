@@ -30,6 +30,9 @@ class Exchange extends EventEmitter{
         Me.emit(`JOB:${Data.ID}`, Data.Message);
       }
     });
+    if(this.Port.start){
+      this.Port.start();
+    }
     this.on('error', function(Message){
       console.error(Message);
     });
@@ -54,6 +57,9 @@ class Exchange extends EventEmitter{
   }
   Finished(Job){
     this.Port.postMessage({Type: 'Reply', ID: Job.ID, Message: Job.Result, EXCHANGE: true});
+  }
+  Terminate(){
+    this.Worker.terminate();
   }
 }
 Exchange.SHARED = 'SHARED';
