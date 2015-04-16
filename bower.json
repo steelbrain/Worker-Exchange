@@ -1,0 +1,26 @@
+{
+  "name": "WorkerExchange",
+  "version": "0.0.1",
+  "homepage": "https://github.com/steelbrain/DeWorker",
+  "authors": [
+    "steelbrain <aneesiqbalbhatti@gmail.com>"
+  ],
+  "description": "Human Friend wrapper for Web Workers",
+  "keywords": [
+    "web",
+    "worker",
+    "cluster",
+    "exchange"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "le-emitter": "*"
+  }
+}
