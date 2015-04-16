@@ -26,7 +26,7 @@ class Exchange extends EventEmitter{
         Me.emit(Data.SubType, Data.Message, Data);
         Me.emit('All', Data.Message, Data);
       } else if (Data.Type === 'Reply'){
-        Me.emit(`Job:${Data.ID}`, Data.Message);
+        Me.emit(`JOB:${Data.ID}`, Data.Message);
       }
     });
     this.on('error', function(Message){
@@ -39,7 +39,7 @@ class Exchange extends EventEmitter{
   }
   Send(Type, Message){
     Message = Message || '';
-    this.port.postMessage({Type: 'Broadcast', SubType: Type, Message: Message, EXCHANGE: true});
+    this.Port.postMessage({Type: 'Broadcast', SubType: Type, Message: Message, EXCHANGE: true});
     return this;
   }
   Request(Type, Message){
@@ -48,11 +48,11 @@ class Exchange extends EventEmitter{
     return new Promise(function(Resolve){
       let JobID = (Math.random().toString(36)+'00000000000000000').slice(2, 7+2);
       Me.once(`JOB:${JobID}`, Resolve);
-      Me.port.postMessage({Type: 'Request', SubType: Type, Message: Message, ID: JobID, EXCHANGE: true});
+      Me.Port.postMessage({Type: 'Request', SubType: Type, Message: Message, ID: JobID, EXCHANGE: true});
     });
   }
   Finished(Job){
-    this.port.postMessage({Type: 'Reply', ID: Job.ID, Message: Job.Result, EXCHANGE: true});
+    this.Port.postMessage({Type: 'Reply', ID: Job.ID, Message: Job.Result, EXCHANGE: true});
   }
 }
 Exchange.SHARED = 'SHARED';
