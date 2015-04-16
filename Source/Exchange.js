@@ -63,7 +63,9 @@ class Exchange extends EventEmitter{
     this.Port.postMessage({Type: 'Reply', ID: Job.ID, Message: Job.Result, EXCHANGE: true});
   }
   Terminate(){
-    this.Worker.terminate();
+    if(this.Type === Exchange.NORMAL){
+      this.Worker.terminate();
+    }
   }
 }
 Exchange.SHARED = 'SHARED';

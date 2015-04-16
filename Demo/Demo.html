@@ -15,7 +15,6 @@
       Shared = new Exchange("Worker.js", Exchange.SHARED);
       Shared.Request('Ping', 'Now').then(function(Result){
         console.log(Result);
-        Shared.Terminate();
       });
     </script>
   </body>
