@@ -9,8 +9,10 @@ class Exchange extends EventEmitter{
   }
   Handle(Port){
     this.Ports.push(Port);
-
     let Me = this;
+    if(this.Type === Exchange.SHARED){
+      Port.start();
+    }
     Port.addEventListener('message', function(e){
       let Data = e.data;
       if(!Data || !Data.EXCHANGE) return; // Ignore Non-Exchange Messages
@@ -25,7 +27,7 @@ class Exchange extends EventEmitter{
       } else if (Data.Type === 'Reply'){
         Me.emit(`JOB:${Data.ID}`, Data.Message, Port);
       }
-    });
+    }, false);
   }
   Send(Type, Message, Port){
     Port = Port || this.Ports[0];
@@ -60,5 +62,5 @@ self.addEventListener('message', function Once(){
 self.addEventListener('connect', function(e){
   // I am a shared worker
   Exchange.Type = Exchange.SHARED;
-  Exchange.handle(e.ports[0]);
+  Exchange.Handle(e.ports[0]);
 });

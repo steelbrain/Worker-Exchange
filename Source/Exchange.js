@@ -12,9 +12,11 @@ class Exchange extends EventEmitter{
     Type = Type || Exchange.NORMAL;
     Debug = Debug || false;
     DebugResponses = DebugResponses || false;
-    this.Worker = Type === Exchange.NORMAL ? new Worker(Path) : new SharedWorker(Path);
-    this.Port = Type === Exchange.NORMAL ? this.Worker : this.Worker.port;
-    this.Worker.addEventListener('message', function(e){
+    let IsNormal = Type === Exchange.NORMAL;
+    this.Worker = IsNormal ? new Worker(Path) : new SharedWorker(Path);
+    this.Port = IsNormal ? this.Worker : this.Worker.port;
+    this.Port.addEventListener('message', function(e){
+      console.log(e);
       let Data = e.data;
       if(!Data || !Data.EXCHANGE) return; // Ignore Non-Exchange Messages
       if(DebugResponses) console.debug(Data);
