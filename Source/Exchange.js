@@ -35,17 +35,20 @@ class Exchange extends EventEmitter{
     this.on('debug', function(Message){
       if(Debug) console.debug(Message);
     });
+    this.Send('Start')
   }
   Send(Type, Message){
+    Message = Message || '';
     this.port.postMessage({Type: 'Broadcast', SubType: Type, Message: Message, EXCHANGE: true});
     return this;
   }
   Request(Type, Message){
+    Message = Message || '';
     let Me = this;
     return new Promise(function(Resolve){
       let JobID = (Math.random().toString(36)+'00000000000000000').slice(2, 7+2);
       Me.once(`JOB:${JobID}`, Resolve);
-      Me.port.postMessage({Type: 'Request', SubType: Type, Message: Message, ID: ID, EXCHANGE: true});
+      Me.port.postMessage({Type: 'Request', SubType: Type, Message: Message, ID: JobID, EXCHANGE: true});
     });
   }
   Finished(Job){
