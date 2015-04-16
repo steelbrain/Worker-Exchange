@@ -39,6 +39,12 @@ Exchange.on('Ping', function(Request, Job){
 });
 ```
 
+#### Installation
+
+```js
+bower install --save worker-exchange
+```
+
 #### API
 
 ```js
