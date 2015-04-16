@@ -49,7 +49,6 @@ class Exchange extends EventEmitter{
 }
 Exchange = new Exchange;
 Exchange.Type = null;
-Exchange.STARTED = false;
 Exchange.SHARED = 'SHARED';
 Exchange.NORMAL = 'NORMAL';
 self.addEventListener('message', function Once(){
