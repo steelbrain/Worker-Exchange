@@ -9,8 +9,29 @@ WorkerExchange internally uses [Le-Emitter][Le-Emitter] for event emitting part,
 WorkerExchange automatically declares `Exchange` variable in Both Worker and Host scope.
 
 #### Hello World
-
 There's nothing better, than a Hello World example.
+```js
+// Host
+var Worker = new Exchange("Worker.js");
+--- or
+var Worker = new Exchange("Worker.js", Exchange.SHARED);
+
+Worker.Request("Ping", {Key: "Value"}).then(function(Response){
+  console.log(Response); // Pong
+});
+```
+```js
+// Worker.js
+importScripts('/path/to/ExchangeClient.js');
+Exchange.on('Ping', function(Request, Job){
+  console.log(Request); // {"Key": "Value"}
+  Job.Result = "Pong";
+  Exchange.Finished(Job)
+});
+```
+
+#### Hello World - Bidirectional
+
 ```js
 // Host
 var Worker = new Exchange("Worker.js");
