@@ -5,7 +5,7 @@
   "authors": [
     "steelbrain <aneesiqbalbhatti@gmail.com>"
   ],
-  "description": "Human Friend wrapper for Web Workers",
+  "description": "Human Friendly wrapper for Web Workers",
   "keywords": [
     "web",
     "worker",
@@ -21,6 +21,6 @@
     "tests"
   ],
   "dependencies": {
-    "le-emitter": "*"
+    "zm-event-kit": "^1.0.1"
   }
 }

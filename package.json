@@ -1,0 +1,22 @@
+{
+  "name": "worker-exchange",
+  "version": "1.0.0",
+  "description": "Human Friendly wrapper for Web Workers",
+  "main": "dist/Exchange.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steelbrain/Worker-Exchange.git"
+  },
+  "author": "steelbrain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/steelbrain/Worker-Exchange/issues"
+  },
+  "homepage": "https://github.com/steelbrain/Worker-Exchange#readme",
+  "dependencies": {
+    "zm-event-kit": "^1.0.1"
+  }
+}
