@@ -218,20 +218,20 @@ module.exports = Emitter;
   if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
 }var _createClass = (function () {
   function e(e, t) {
-    for (var r = 0; r < t.length; r++) {
-      var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+    for (var n = 0; n < t.length; n++) {
+      var r = t[n];r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), Object.defineProperty(e, r.key, r);
     }
-  }return function (t, r, n) {
-    return (r && e(t.prototype, r), n && e(t, n), t);
+  }return function (t, n, r) {
+    return (n && e(t.prototype, n), r && e(t, r), t);
   };
 })(),
-    _get = function _get(e, t, r) {
-  for (var n = !0; n;) {
+    _get = function _get(e, t, n) {
+  for (var r = !0; r;) {
     var o = e,
         s = t,
-        i = r;u = c = a = void 0, n = !1, null === o && (o = Function.prototype);var u = Object.getOwnPropertyDescriptor(o, s);if (void 0 !== u) {
+        i = n;u = c = a = void 0, r = !1, null === o && (o = Function.prototype);var u = Object.getOwnPropertyDescriptor(o, s);if (void 0 !== u) {
       if ("value" in u) return u.value;var a = u.get;return void 0 === a ? void 0 : a.call(i);
-    }var c = Object.getPrototypeOf(o);if (null === c) return void 0;e = c, t = s, r = i, n = !0;
+    }var c = Object.getPrototypeOf(o);if (null === c) return void 0;e = c, t = s, n = i, r = !0;
   }
 },
     EventEmitter = require("zm-event-kit").Emitter,
@@ -240,22 +240,22 @@ module.exports = Emitter;
     _classCallCheck(this, t), _get(Object.getPrototypeOf(t.prototype), "constructor", this).call(this), this.debug = e;
   }return (_inherits(t, e), _createClass(t, [{ key: "gotMessage", value: function value(e, t) {
       if (t.SB) if ((this.debug && console.debug(t), "send" === t.Genre)) {
-        t.response = null;var r = void 0;try {
-          this.emit(t.Type, t), r = t.response instanceof Promise ? t.response : Promise.resolve(t.response);
-        } catch (n) {
-          r = Promise.reject(n);
-        }r.then(function (r) {
-          e({ Genre: "response", Status: !0, Result: r, ID: t.ID, SB: !0 });
-        }, function (r) {
-          r instanceof Error && (r = { stack: r.stack, message: r.message }), e({ Genre: "response", Status: !1, Result: r, ID: t.ID, SB: !0 });
+        t.Response = null;var n = void 0;try {
+          this.emit(t.Type, t), n = t.Response instanceof Promise ? t.Response : Promise.resolve(t.Response);
+        } catch (r) {
+          n = Promise.reject(r);
+        }n.then(function (n) {
+          e({ Genre: "response", Status: !0, Result: n, ID: t.ID, SB: !0 });
+        }, function (n) {
+          n instanceof Error && (n = { stack: n.stack, message: n.message }), e({ Genre: "response", Status: !1, Result: n, ID: t.ID, SB: !0 });
         });
       } else "response" === t.Genre && this.emit("JOB:" + t.ID, t);
-    } }, { key: "request", value: function value(e, r, n) {
+    } }, { key: "request", value: function value(e, n, r) {
       var o = this;return new Promise(function (s, i) {
         var u = t.randomId(),
             a = o.on("JOB:" + u, function (e) {
           a.dispose(), e.Status ? s(e.Result) : i(e.Result);
-        });e({ Type: r, Genre: "send", Message: n, SB: !0, ID: u });
+        });e({ Type: n, Genre: "send", Message: r, SB: !0, ID: u });
       });
     } }], [{ key: "randomId", value: function value() {
       return (Math.random().toString(36) + "00000000000000000").slice(2, 9);
