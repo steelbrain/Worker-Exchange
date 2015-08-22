@@ -3,17 +3,16 @@
   <title>Web Worker Test</title>
 </head>
 <body>
-<script src="../Dist/Exchange.js"></script>
+<script src="../dist/Exchange.js"></script>
 <script>
   "use strict";
   var Worker = new Exchange("Worker2.js");
-  Worker.Request("Ping", {Key: "Value"}).then(function(Response){
+  Worker.request("Ping", {Key: "Value"}).then(function(Response){
     console.log(Response); // Pong
   });
-  Worker.on('PingYou', function(Request, Job){
-    console.log(Request); // "PongYou"
-    Job.Result = 'You Too';
-    Worker.Finished(Job);
+  Worker.on('PingYou', function(Job){
+    console.log(Job.Message); // "PongYou"
+    Job.response = 'You Too';
   });
 </script>
 </body>

@@ -3,18 +3,19 @@
     <title>Web Worker Test</title>
   </head>
   <body>
-    <script src="../Dist/Exchange.js"></script>
+    <script src="../dist/Exchange.js"></script>
     <script>
       "use strict";
       var Dedicated, Shared;
       Dedicated = new Exchange("Worker.js");
-      Dedicated.Request('Ping', 'Now').then(function(Result){
+      Dedicated.request('Ping', 'Now').then(function(Result){
         console.log(Result);
-        Dedicated.Terminate();
+        Dedicated.terminate();
       });
       Shared = new Exchange("Worker.js", Exchange.SHARED);
-      Shared.Request('Ping', 'Now').then(function(Result){
+      Shared.request('Ping', 'Now').then(function(Result){
         console.log(Result);
+        Shared.terminate()
       });
     </script>
   </body>

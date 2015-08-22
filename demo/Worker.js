@@ -1,8 +1,7 @@
 
 
-importScripts('../Dist/ExchangeClient.js');
-Exchange.on('Ping', function(Message, Job){
-  console.log(Message); // Outputs 'Now'
-  Job.Result = 'Pong';
-  Exchange.Finished(Job);
+importScripts('../dist/ExchangeClient.js');
+Exchange.on('Ping', function(Job){
+  console.log(Job.Message); // Outputs 'Now'
+  Job.response = 'Pong';
 });
