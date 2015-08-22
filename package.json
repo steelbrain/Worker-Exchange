@@ -1,6 +1,6 @@
 {
   "name": "worker-exchange",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Human Friendly wrapper for Web Workers",
   "main": "dist/Exchange.js",
   "scripts": {
