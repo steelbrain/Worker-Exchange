@@ -2,7 +2,7 @@
   "name": "worker-exchange",
   "version": "2.0.2",
   "description": "Human Friendly wrapper for Web Workers",
-  "main": "a-non-existent-file",
+  "main": "lib/main",
   "scripts": {
     "test": "apm test",
     "compile": "ucompiler go src && browserify lib/main.js --standalone Exchange > exchange.js",
