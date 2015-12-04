@@ -27,6 +27,7 @@ export default class Exchange {
     this.onRequest('ping', function(_, message) {
       message.response = 'pong'
     })
+    this.request('ping')
   }
 
   request(name, data = {}) {
