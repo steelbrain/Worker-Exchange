@@ -2,10 +2,11 @@
   "name": "worker-exchange",
   "version": "2.0.2",
   "description": "Human Friendly wrapper for Web Workers",
-  "main": "dist/Exchange.js",
+  "main": "lib/main",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "uc-compile lib/Exchange.js; uc-compile lib/ExchangeClient.js"
+    "test": "apm test",
+    "compile": "ucompiler go src && browserify lib/main.js --standalone Exchange > exchange.js",
+    "dist": "npm run compile && git add exchange.js && git add lib && git commit -m ':arrow_up: Upgrade dist file'"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,11 @@
   },
   "homepage": "https://github.com/steelbrain/Worker-Exchange#readme",
   "dependencies": {
-    "zm-event-kit": "^1.0.2",
-    "sb-communication": "^3.0.0"
+    "sb-communication": "^4.0.1",
+    "sb-event-kit": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-preset-steelbrain": "^1.0.0",
+    "babel-preset-steelbrain-legacy": "^1.0.0"
   }
 }

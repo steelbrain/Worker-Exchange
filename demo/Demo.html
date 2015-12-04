@@ -3,20 +3,20 @@
     <title>Web Worker Test</title>
   </head>
   <body>
-    <script src="../dist/Exchange.js"></script>
+    <script src="../exchange.js"></script>
     <script>
       "use strict";
-      var Dedicated, Shared;
-      Dedicated = new Exchange("Worker.js");
-      Dedicated.request('Ping', 'Now').then(function(Result){
-        console.log(Result);
-        Dedicated.terminate();
-      });
-      Shared = new Exchange("Worker.js", Exchange.SHARED);
-      Shared.request('Ping', 'Now').then(function(Result){
-        console.log(Result);
-        Shared.terminate()
-      });
+      const workerFrom = 'a random person in the world'
+      const worker = Exchange.create('Worker.js')
+      worker.request('hello', {from: workerFrom}).then(function(result) {
+        console.log('hello', result === 'Hello ' + workerFrom)
+        worker.terminate()
+      })
+      const sharedWorker = Exchange.createShared('Worker.js')
+      sharedWorker.request('hello', {from: 'Steel'}).then(function(result) {
+        console.log('hello2', 'Hello Steel' === result)
+        sharedWorker.terminate()
+      })
     </script>
   </body>
 </html>
