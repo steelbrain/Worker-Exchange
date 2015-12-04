@@ -16,9 +16,9 @@ class Exchange {
     const callback = message => {
       this.communication.parseMessage(message.data)
     }
-    this.worker.addEventListener('message', callback)
+    this.port.addEventListener('message', callback)
     this.subscriptions.add(new Disposable(() => {
-      this.worker.removeEventListener('message', callback)
+      this.port.removeEventListener('message', callback)
     }))
     this.communication.onShouldSend(message => {
       this.port.postMessage(message)
@@ -27,7 +27,6 @@ class Exchange {
     this.onRequest('ping', function(_, message) {
       message.response = 'pong'
     })
-    this.request('ping')
   }
 
   request(name, data = {}) {
@@ -51,8 +50,9 @@ class Exchange {
   }
   static createShared(filePath) {
     const worker = new SharedWorker(filePath)
+    const exchange = new Exchange(worker)
     worker.port.start()
-    return new Exchange(worker)
+    return exchange
   }
 }
 
