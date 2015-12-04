@@ -1,6 +1,6 @@
 'use babel'
 
-import {CompositeDisposable} from 'sb-event-kit'
+import {Disposable, CompositeDisposable} from 'sb-event-kit'
 import Communication from 'sb-communication'
 
 export default class Exchange {
@@ -17,11 +17,9 @@ export default class Exchange {
       this.communication.parseMessage(message)
     }
     this.worker.addEventListener('message', callback)
-    this.subscriptions.add({
-      dispose: () => {
-        this.worker.removeEventListener('message', callback)
-      }
-    })
+    this.subscriptions.add(new Disposable(() => {
+      this.worker.removeEventListener('message', callback)
+    }))
     this.communication.onShouldSend(message => {
       this.port.postMessage(message)
     })
