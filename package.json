@@ -2,10 +2,11 @@
   "name": "worker-exchange",
   "version": "2.0.2",
   "description": "Human Friendly wrapper for Web Workers",
-  "main": "dist/Exchange.js",
+  "main": "a-non-existent-file",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "uc-compile lib/Exchange.js; uc-compile lib/ExchangeClient.js"
+    "test": "apm test",
+    "compile": "ucompiler go src",
+    "dist": "browserify lib/main.js > exchange.js && git add exchange.js && git commit -m ':arrow_up: Upgrade dist file'"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,9 @@
   "dependencies": {
     "sb-communication": "^4.0.1",
     "sb-event-kit": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-preset-steelbrain": "^1.0.0",
+    "babel-preset-steelbrain-legacy": "^1.0.0"
   }
 }
