@@ -42,4 +42,13 @@ export default class Exchange {
   dispose() {
     this.subscriptions.dispose()
   }
+
+  static create(filePath) {
+    return new Exchange(new Worker(filePath))
+  }
+  static createShared(filePath) {
+    const worker = new SharedWorker(filePath)
+    worker.port.start()
+    return new Exchange(worker)
+  }
 }
