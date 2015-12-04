@@ -25,6 +25,10 @@ export default class Exchange {
     this.communication.onShouldSend(message => {
       this.port.postMessage(message)
     })
+
+    this.onRequest('ping', function(_, message) {
+      message.response = 'pong'
+    })
   }
 
   request(name, data = {}) {
