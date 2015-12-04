@@ -13,9 +13,9 @@ if (typeof document === 'undefined') {
     // I am a shared worker
     exchange.addPort(e.ports[0])
   })
-  window.Exchange = Exchange
-  window.exchange = exchange
+  module.exports = Exchange
+  self.exchange = exchange
 } else {
   // We're in a host
-  window.Exchange = require('./exchange-main')
+  module.exports = require('./exchange-main')
 }

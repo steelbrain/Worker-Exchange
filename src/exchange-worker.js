@@ -3,7 +3,7 @@
 import {Emitter, CompositeDisposable} from 'sb-event-kit'
 import ExchangePort from './exchange-worker-port'
 
-export default class Exchange {
+class Exchange {
   constructor() {
     this.ports = new Set()
     this.emitter = new Emitter()
@@ -49,3 +49,5 @@ export default class Exchange {
     this.subscriptions.dispose()
   }
 }
+
+module.exports = Exchange

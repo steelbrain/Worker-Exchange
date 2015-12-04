@@ -3,7 +3,7 @@
 import {Disposable, CompositeDisposable} from 'sb-event-kit'
 import Communication from 'sb-communication'
 
-export default class Exchange {
+class Exchange {
   constructor(worker) {
     this.worker = worker
     this.port = worker.port || worker
@@ -55,3 +55,5 @@ export default class Exchange {
     return new Exchange(worker)
   }
 }
+
+module.exports = Exchange

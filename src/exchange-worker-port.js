@@ -3,7 +3,7 @@
 import {Disposable, Emitter, CompositeDisposable} from 'sb-event-kit'
 import Communication from 'sb-communication'
 
-export default class ExchangePort {
+class ExchangePort {
   constructor(port) {
     this.active = true
     this.port = port
@@ -79,3 +79,5 @@ export default class ExchangePort {
     }
   }
 }
+
+module.exports = ExchangePort
