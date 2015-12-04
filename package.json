@@ -5,8 +5,8 @@
   "main": "a-non-existent-file",
   "scripts": {
     "test": "apm test",
-    "compile": "ucompiler go src",
-    "dist": "browserify lib/main.js > exchange.js && git add exchange.js && git commit -m ':arrow_up: Upgrade dist file'"
+    "compile": "ucompiler go src && browserify lib/main.js --standalone Exchange > exchange.js",
+    "dist": "npm run compile && git add exchange.js && git add lib && git commit -m ':arrow_up: Upgrade dist file'"
   },
   "repository": {
     "type": "git",
