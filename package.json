@@ -1,6 +1,6 @@
 {
   "name": "worker-exchange",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Human Friendly wrapper for Web Workers",
   "main": "lib/main",
   "scripts": {
