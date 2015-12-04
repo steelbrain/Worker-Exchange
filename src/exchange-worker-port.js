@@ -48,6 +48,10 @@ export default class ExchangePort {
       }, 1000)
     }
     ping()
+
+    this.onRequest('ping', function(_, message) {
+      message.response = 'pong'
+    })
   }
 
   request(name, data = {}) {
