@@ -11,7 +11,9 @@ if (typeof document === 'undefined') {
   })
   self.addEventListener('connect', function(e){
     // I am a shared worker
-    exchange.addPort(e.ports[0])
+    const port = e.ports[0]
+    exchange.addPort(port)
+    port.start()
   })
   module.exports = Exchange
   self.exchange = exchange

@@ -27,11 +27,6 @@ class ExchangePort {
       this.port.postMessage(message)
     })
 
-    // Start the port if it's a shared worker
-    if (typeof this.port.start === 'function') {
-      this.port.start()
-    }
-
     // Check if the port is closed, we got no official close event
     let timeout
     const ping = () => {
