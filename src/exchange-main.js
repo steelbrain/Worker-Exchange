@@ -38,7 +38,11 @@ class Exchange {
   }
 
   terminate() {
-    this.worker.terminate()
+    if (this.worker.terminate) {
+      this.worker.terminate()
+    } else {
+      this.port.close()
+    }
     this.dispose()
   }
   dispose() {
