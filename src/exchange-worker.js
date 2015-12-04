@@ -31,6 +31,13 @@ export default class Exchange {
     this.forEach(callback)
     return this.onDidPortAdd(callback)
   }
+  onRequest(name, callback) {
+    const subscriptions = new CompositeDisposable()
+    subscriptions.add(this.observe(function(port) {
+      subscriptions.add(port.onRequest(name, callback))
+    }))
+    return subscriptions
+  }
   onDidPortAdd(callback) {
     return this.emitter.on('port-add', callback)
   }
