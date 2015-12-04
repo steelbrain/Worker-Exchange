@@ -14,7 +14,7 @@ class Exchange {
     this.subscriptions.add(this.communication)
 
     const callback = message => {
-      this.communication.parseMessage(message)
+      this.communication.parseMessage(message.data)
     }
     this.worker.addEventListener('message', callback)
     this.subscriptions.add(new Disposable(() => {

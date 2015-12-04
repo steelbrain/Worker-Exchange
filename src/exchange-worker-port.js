@@ -17,7 +17,7 @@ class ExchangePort {
 
     // Share data between communication and port
     const callback = message => {
-      this.communication.parseMessage(message)
+      this.communication.parseMessage(message.data)
     }
     this.port.addEventListener('message', callback)
     this.subscriptions.add(new Disposable(() => {
