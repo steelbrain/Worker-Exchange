@@ -1,7 +1,6 @@
+'use strict'
 
-
-importScripts('../dist/ExchangeClient.js');
-Exchange.on('Ping', function(Job){
-  console.log(Job.Message); // Outputs 'Now'
-  Job.Response = 'Pong';
-});
+importScripts('../exchange.js');
+exchange.onRequest('hello', function(data, message) {
+  message.response = 'Hello ' + data.from
+})
