@@ -24,7 +24,7 @@ worker.request('some-job', {Key: 'value'}).then(function(response){
 importScripts('/path/to/exchange.js');
 exchange.onRequest('some-job', function(data, message){
   console.log(data); // {"Key": "Value"}
-  message.Response = "Pong";
+  message.response = "Pong";
 });
 ```
 
