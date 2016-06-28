@@ -12,10 +12,10 @@ It automatically creates an `Exchange` instance in worker scope with the name `e
 ```js
 // Host
 const worker = Exchange.create('Worker.js');
---- or
+// or
 const worker = Exchange.createShared('Worker.js');
 
-worker.request('some-job', {Key: 'value'}).then(function(response){
+worker.request('some-job', {Key: 'value'}).then((response) => {
   console.log(response); // Pong
 });
 ```
@@ -32,7 +32,7 @@ Check out the [Online Demo][Demo]. (Check your browser console)
 
 #### Installation
 
-```js
+```bash
 npm install --save worker-exchange
 ```
 
