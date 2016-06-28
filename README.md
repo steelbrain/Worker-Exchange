@@ -15,7 +15,7 @@ const worker = Exchange.create('Worker.js');
 // or
 const worker = Exchange.createShared('Worker.js');
 
-worker.request('some-job', {Key: 'value'}).then((response) => {
+worker.request('some-job', {Key: 'value'}).then(function(response){
   console.log(response); // Pong
 });
 ```
